@@ -1,0 +1,28 @@
+{
+  "en": {
+    "error": "Error",
+    "title": "JSON Formatter",
+    "labels": {
+      "data": "Paste or type your JSON here...",
+      "input": "Input",
+      "output": "Output"
+    },
+    "buttons": {
+      "copy": "Copy",
+      "copied": "Copied!"
+    }
+  },
+  "es": {
+    "error": "Error",
+    "title": "Formateador de JSON",
+    "labels": {
+      "data": "Pega o escribe tu JSON aquí...",
+      "input": "Entrada",
+      "output": "Salida"
+    },
+    "buttons": {
+      "copy": "Copiar",
+      "copied": "Copiado!"
+    }
+  }
+}
