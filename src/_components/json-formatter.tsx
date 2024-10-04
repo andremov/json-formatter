@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, Fragment } from "react";
 import { AlertCircle, Check, Copy } from "lucide-react";
 import locale from "~/utils/locale.json";
+import type LocaleStrings from "~/utils/types";
 
 const debounce = (func: (arg: string) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout;
@@ -17,7 +18,7 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  const localeStrings = locale[lang];
+  const localeStrings = locale[lang] as LocaleStrings;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const formatJSON = useCallback(
