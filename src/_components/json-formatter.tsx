@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect, useCallback, Fragment } from "react";
-import { AlertCircle, Check, Columns2, Copy, Rows2Icon } from "lucide-react";
+import { AlertCircle, Check, Copy } from "lucide-react";
 import locale from "~/utils/locale.json";
 import type LocaleStrings from "~/utils/types";
 import clsx from "clsx";
+import Header from "./header";
 
 const debounce = (func: (arg: string) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout;
@@ -15,7 +16,9 @@ const debounce = (func: (arg: string) => void, delay: number) => {
 };
 
 export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(
+    '{"test": "hey everyone how are you doing today heres the thing i am testing this thing and i was trying to check"}',
+  );
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [isCopied, setIsCopied] = useState(false);
@@ -61,69 +64,51 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
   };
 
   return (
-    <div className="container mx-auto p-4 pt-16">
-      <div className="relative mx-auto flex max-w-screen-md items-center justify-center">
-        <h1 className="mb-4 text-center text-2xl font-bold">
-          {localeStrings.title}
-        </h1>
-
-        <div className="absolute right-0 top-0 flex w-fit rounded-md border border-gray-200">
-          <button
-            className={clsx([
-              "px-2 py-1",
-              {
-                "bg-gray-200": showColumns,
-                "opacity-50": !showColumns,
-              },
-            ])}
-            onClick={() => setShowColumns(true)}
-          >
-            <Columns2 />
-          </button>
-
-          <button
-            className={clsx([
-              "px-2 py-1",
-              {
-                "bg-gray-200": !showColumns,
-                "opacity-50": showColumns,
-              },
-            ])}
-            onClick={() => setShowColumns(false)}
-          >
-            <Rows2Icon />
-          </button>
-        </div>
-      </div>
+    <div className="container mx-auto flex h-full flex-col">
+      <Header
+        setShowColumns={setShowColumns}
+        lang={lang}
+        showColumns={showColumns}
+      />
 
       <div
         className={clsx([
-          "mx-auto flex max-w-3xl gap-4",
+          "flex flex-1 gap-4",
           {
             "flex-row": showColumns,
             "flex-col": !showColumns,
           },
         ])}
       >
-        <div className="flex-1 space-y-4">
-          <h2 className="text-lg font-semibold">
+        <div
+          className={clsx([
+            "flex flex-col gap-2",
+            {
+              "w-1/2": showColumns,
+              "flex-1": !showColumns,
+            },
+          ])}
+        >
+          <h2 className="h-10 text-lg font-semibold">
             {localeStrings.labels.input}
           </h2>
           <textarea
             placeholder={localeStrings.labels.data}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className={clsx([
-              "w-full resize-none rounded-md border border-gray-200 p-4 outline-none transition focus:border-blue-400",
-              {
-                "h-[calc(100vh-200px)] min-h-[300px]": showColumns,
-                "h-[calc(45vh-100px)] min-h-[300px]": !showColumns,
-              },
-            ])}
+            className="w-full flex-1 resize-none rounded-md border border-gray-200 p-4 outline-none transition focus:border-blue-400"
           />
         </div>
-        <div className="flex-1 space-y-4">
-          <div className="flex items-center justify-between">
+
+        <div
+          className={clsx([
+            "flex flex-col gap-2",
+            {
+              "w-1/2": showColumns,
+            },
+          ])}
+        >
+          <div className="flex h-10 items-center justify-between">
             <h2 className="text-lg font-semibold">
               {localeStrings.labels.output}
             </h2>
@@ -152,28 +137,29 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
             )}
           </div>
 
-          <div
+          <pre
             className={clsx([
+              "flex-1 rounded-md bg-gray-200 p-4",
               {
-                "relative h-[calc(100vh-200px)] min-h-[300px]": showColumns,
-                "relative h-[calc(45vh-100px)] min-h-[300px]": !showColumns,
+                "whitespace-pre-wrap text-red-400": !!error,
+                "overflow-auto": !error,
+                "max-h-[81.4vh]": showColumns,
+                "max-h-[40.7vh]": !showColumns,
               },
             ])}
           >
             {error ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center rounded-md border border-red-500 p-4 text-red-500">
-                <AlertCircle className="absolute left-5 top-5 h-4 w-4" />
-                <div className="flex flex-col gap-2">
+              <>
+                <div className="mb-4 flex items-center gap-6">
+                  <AlertCircle className="h-5 w-5" />
                   <span className="font-bold">{localeStrings.error}</span>
-                  <span>{error}</span>
                 </div>
-              </div>
+                <span>{error}</span>
+              </>
             ) : (
-              <pre className="h-full overflow-auto rounded-md bg-gray-200 p-4">
-                <code>{output}</code>
-              </pre>
+              output
             )}
-          </div>
+          </pre>
         </div>
       </div>
     </div>
