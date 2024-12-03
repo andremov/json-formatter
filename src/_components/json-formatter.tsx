@@ -16,9 +16,7 @@ const debounce = (func: (arg: string) => void, delay: number) => {
 };
 
 export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
-  const [input, setInput] = useState(
-    '{"test": "hey everyone how are you doing today heres the thing i am testing this thing and i was trying to check"}',
-  );
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [isCopied, setIsCopied] = useState(false);
