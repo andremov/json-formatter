@@ -39,14 +39,19 @@ export function TextArea({
       className={clsx([
         "flex min-h-12 flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out",
         {
-          "flex-1 lg:w-1/2": showColumns && !isMinimized,
-          "flex-1": !showColumns && !isMinimized,
+          "lg:w-1/2": showColumns,
+          "flex-1": !isMinimized,
           "h-auto w-auto": isMinimized,
         },
       ])}
     >
       <div
-        className="flex h-10 items-center justify-between bg-neutral-200 lg:rounded-sm"
+        className={clsx([
+          "flex h-10 items-center justify-between bg-neutral-200 lg:rounded-sm",
+          {
+            "md:pointer-events-none": showColumns,
+          },
+        ])}
         onClick={() => setIsMinimized(!isMinimized)}
       >
         <div className="flex items-center gap-2">
@@ -60,6 +65,7 @@ export function TextArea({
                 {
                   "rotate-180": isMinimized,
                   "rotate-0": !isMinimized,
+                  "md:hidden": showColumns,
                 },
               ])}
             />
@@ -98,6 +104,7 @@ export function TextArea({
           "flex min-h-0 flex-1 overflow-hidden px-1 transition-all duration-300 ease-in-out",
           {
             "max-h-0 opacity-0": isMinimized,
+            "md:max-h-full md:opacity-100": showColumns,
             "opacity-100": !isMinimized,
           },
         ])}
