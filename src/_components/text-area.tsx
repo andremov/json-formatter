@@ -1,0 +1,109 @@
+import clsx from "clsx";
+import { Check, Copy, ChevronUp } from "lucide-react";
+import { Fragment, useState } from "react";
+
+export function TextArea({
+  title,
+  value,
+  children,
+  showColumns,
+  copyActionLabel = "Copy",
+  copiedActionLabel = "Copied",
+  minimizeLabel = "Minimize",
+  expandLabel = "Expand",
+}: {
+  title: string;
+  value: string;
+  children: React.ReactNode;
+  showColumns?: boolean;
+  copyActionLabel?: string;
+  copiedActionLabel?: string;
+  minimizeLabel?: string;
+  expandLabel?: string;
+}) {
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
+
+  return (
+    <div
+      className={clsx([
+        "flex min-h-12 flex-col gap-2 overflow-hidden transition-all duration-300 ease-in-out",
+        {
+          "flex-1 lg:w-1/2": showColumns && !isMinimized,
+          "flex-1": !showColumns && !isMinimized,
+          "h-auto w-auto": isMinimized,
+        },
+      ])}
+    >
+      <div
+        className="flex h-10 items-center justify-between bg-neutral-200 lg:rounded-sm"
+        onClick={() => setIsMinimized(!isMinimized)}
+      >
+        <div className="flex items-center gap-2">
+          <div
+            className="flex items-center justify-center rounded-md border border-gray-200 p-1 outline-none transition hover:bg-gray-200"
+            title={isMinimized ? expandLabel : minimizeLabel}
+          >
+            <ChevronUp
+              className={clsx([
+                "h-4 w-4 transition-transform duration-300 ease-in-out",
+                {
+                  "rotate-180": isMinimized,
+                  "rotate-0": !isMinimized,
+                },
+              ])}
+            />
+          </div>
+          <h2 className="text-lg font-semibold">{title}</h2>
+        </div>
+        <div className="transition-all duration-300 ease-in-out">
+          {value && (
+            <button
+              onClick={handleCopy}
+              className={clsx([
+                "flex items-center gap-2 rounded-md border border-gray-200 px-2 py-1 outline-none transition hover:bg-gray-200",
+                {
+                  "bg-green-600 text-white": isCopied,
+                },
+              ])}
+            >
+              {isCopied ? (
+                <Fragment>
+                  <Check className="h-4 w-4" />
+                  <span>{copiedActionLabel}</span>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Copy className="h-4 w-4" />
+                  <span>{copyActionLabel}</span>
+                </Fragment>
+              )}
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div
+        className={clsx([
+          "flex min-h-0 flex-1 overflow-hidden px-1 transition-all duration-300 ease-in-out",
+          {
+            "max-h-0 opacity-0": isMinimized,
+            "opacity-100": !isMinimized,
+          },
+        ])}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}

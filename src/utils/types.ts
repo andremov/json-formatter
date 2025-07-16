@@ -9,6 +9,8 @@ type LocaleStrings = {
   buttons: {
     copy: string;
     copied: string;
+    minimize: string;
+    expand: string;
   };
 };
 

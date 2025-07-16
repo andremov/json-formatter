@@ -19,7 +19,7 @@ export default function Header(props: HeaderPropsType) {
         {localeStrings.title}
       </h1>
 
-      <div className="absolute right-0 top-0 flex w-fit rounded-md border border-gray-200">
+      <div className="absolute right-0 top-0 hidden w-fit rounded-md border border-gray-200 md:flex">
         <button
           className={clsx([
             "px-2 py-1",
