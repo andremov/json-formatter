@@ -6,7 +6,10 @@ import { type Metadata } from "next";
 export const metadata: Metadata = {
   title: "JSON Formatter",
   description: "👤✏️ Andrés Movilla",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [
+    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+    { rel: "apple-touch-icon", url: "/favicon.svg" },
+  ],
   manifest: "/manifest.json",
   other: {
     "service-worker": "enabled",

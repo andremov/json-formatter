@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const serviceWorkerCode = `
 // JSON Formatter Service Worker
-const CACHE_NAME = 'json-formatter-v2';
+const CACHE_NAME = 'json-formatter-v3';
 const STATIC_CACHE_URLS = [
   '/',
   '/en',
   '/es',
-  '/favicon.ico',
+  '/favicon.svg',
   '/manifest.json',
 ];
 
