@@ -47,7 +47,7 @@ export function TextArea({
     >
       <div
         className={clsx([
-          "flex h-10 items-center justify-between bg-gray-700 px-2 md:rounded-md",
+          "flex h-10 items-center justify-between bg-gray-700 px-2 lg:rounded-sm",
           {
             "md:pointer-events-none": showColumns,
           },

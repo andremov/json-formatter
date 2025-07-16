@@ -7,6 +7,7 @@ import type LocaleStrings from "~/utils/types";
 import clsx from "clsx";
 import Header from "./header";
 import { TextArea } from "./text-area";
+import OfflineIndicator from "./offline-indicator";
 
 const debounce = (func: (arg: string) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout;
@@ -51,8 +52,14 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
     formatJSON(input);
   }, [input, formatJSON]);
 
+  if (!localeStrings) {
+    console.log("Locale strings not found for language:", lang);
+
+    return <></>;
+  }
+
   return (
-    <div className="container mx-auto flex h-full max-h-full flex-col overflow-hidden">
+    <div className="container mx-auto flex h-full max-h-full flex-col overflow-hidden bg-gray-900 text-white">
       <Header
         setShowColumns={setShowColumns}
         lang={lang}
@@ -61,7 +68,7 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
 
       <div
         className={clsx([
-          "flex flex-1 flex-col gap-1 overflow-hidden md:gap-0 lg:gap-2 lg:px-2",
+          "flex flex-1 flex-col gap-1 overflow-hidden md:gap-2 lg:px-2",
           {
             "md:flex-row": showColumns,
             "md:flex-col": !showColumns,
@@ -82,7 +89,7 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
             placeholder={localeStrings.labels.data}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="w-full flex-1 resize-none rounded-md border border-gray-200 p-4 outline-none transition focus:border-blue-400"
+            className="w-full flex-1 resize-none rounded-md border border-gray-600 bg-gray-800 p-4 text-white placeholder-gray-400 outline-none transition focus:border-blue-500"
           />
         </TextArea>
 
@@ -97,7 +104,7 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
         >
           <pre
             className={clsx([
-              "flex-1 overflow-x-hidden text-wrap break-words rounded-md bg-gray-200 p-4",
+              "flex-1 overflow-x-hidden text-wrap break-words rounded-md bg-gray-800 p-4 text-gray-100",
               {
                 "whitespace-pre-wrap text-red-400": !!error,
                 "overflow-auto": !error,
@@ -118,6 +125,7 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
           </pre>
         </TextArea>
       </div>
+      <OfflineIndicator />
     </div>
   );
 }

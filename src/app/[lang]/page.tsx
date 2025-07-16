@@ -10,8 +10,8 @@ type PageProps = {
 export default function HomePage({ params }: PageProps) {
   return (
     <main className="h-screen max-h-screen pb-4 pt-16">
-      <LocaleSwitcher lang={params.lang} />
-      <JSONFormatter lang={params.lang} />
+      <LocaleSwitcher lang={params.lang ?? "en"} />
+      <JSONFormatter lang={params.lang ?? "en"} />
     </main>
   );
 }

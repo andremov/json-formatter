@@ -14,18 +14,18 @@ export default function Header(props: HeaderPropsType) {
   const localeStrings = locale[lang] as LocaleStrings;
 
   return (
-    <div className="relative mx-auto flex w-full max-w-screen-md items-center justify-center">
-      <h1 className="mb-4 text-center text-2xl font-bold">
+    <div className="relative mx-auto flex w-full max-w-screen-md items-center justify-center py-4">
+      <h1 className="mb-4 text-center text-2xl font-bold text-white">
         {localeStrings.title}
       </h1>
 
-      <div className="absolute right-0 top-0 hidden w-fit rounded-md border border-gray-200 md:flex">
+      <div className="absolute right-0 top-0 hidden w-fit rounded-md border border-gray-600 bg-gray-700 md:flex">
         <button
           className={clsx([
-            "px-2 py-1",
+            "px-2 py-1 text-white transition-colors",
             {
-              "bg-gray-200": showColumns,
-              "opacity-50": !showColumns,
+              "bg-gray-600": showColumns,
+              "opacity-50 hover:opacity-75": !showColumns,
             },
           ])}
           onClick={() => setShowColumns(true)}
@@ -35,10 +35,10 @@ export default function Header(props: HeaderPropsType) {
 
         <button
           className={clsx([
-            "px-2 py-1",
+            "px-2 py-1 text-white transition-colors",
             {
-              "bg-gray-200": !showColumns,
-              "opacity-50": showColumns,
+              "bg-gray-600": !showColumns,
+              "opacity-50 hover:opacity-75": showColumns,
             },
           ])}
           onClick={() => setShowColumns(false)}
