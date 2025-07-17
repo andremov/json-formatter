@@ -1,5 +1,5 @@
 const CACHE_NAME = "json-formatter-v1";
-const STATIC_CACHE_URLS = ["/", "/en", "/es", "/manifest.json", "/favicon.ico"];
+const STATIC_CACHE_URLS = ["/", "/en", "/es", "/manifest.json", "/favicon.svg"];
 
 // Install event - cache static assets
 self.addEventListener("install", (event) => {
