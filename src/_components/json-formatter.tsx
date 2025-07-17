@@ -7,7 +7,6 @@ import type LocaleStrings from "~/utils/types";
 import clsx from "clsx";
 import Header from "./header";
 import { TextArea } from "./text-area";
-import OfflineIndicator from "./offline-indicator";
 
 const debounce = (func: (arg: string) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout;
@@ -125,7 +124,6 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
           </pre>
         </TextArea>
       </div>
-      <OfflineIndicator />
     </div>
   );
 }

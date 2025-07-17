@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Wifi, WifiOff } from "lucide-react";
-import clsx from "clsx";
 
 export default function OfflineIndicator() {
   const [isOnline, setIsOnline] = useState(true);
@@ -37,13 +36,7 @@ export default function OfflineIndicator() {
 
   return (
     <div
-      className={clsx([
-        "fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-white shadow-lg transition-all duration-300",
-        {
-          "bg-green-600": isOnline,
-          "bg-red-600": !isOnline,
-        },
-      ])}
+      className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-white shadow-lg transition-all duration-300 ${isOnline ? "bg-green-600" : "bg-red-600"}`}
     >
       {isOnline ? (
         <>

@@ -1,24 +1,21 @@
 {
   "name": "JSON Formatter",
   "short_name": "JSON Formatter",
-  "description": "A fast and simple JSON formatter and validator",
+  "description": "Format and validate JSON data offline - by Andrés Movilla",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111827",
   "theme_color": "#111827",
-  "orientation": "any",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
-    },
-    {
-      "src": "/favicon.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
     }
   ],
-  "categories": ["utilities", "developer", "productivity"]
+  "categories": ["utilities", "productivity", "developer"],
+  "screenshots": [],
+  "lang": "en",
+  "dir": "ltr"
 }
