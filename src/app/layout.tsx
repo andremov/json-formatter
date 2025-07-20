@@ -57,8 +57,8 @@ export default function RootLayout({
         <meta name="msapplication-tap-highlight" content="no" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
-      <body>
-        <ServiceWorkerRegistration />
+      <body className="bg-gray-900 text-gray-100">
+        {/* <ServiceWorkerRegistration /> */}
         <OfflineIndicator />
         {children}
       </body>

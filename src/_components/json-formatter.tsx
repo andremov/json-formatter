@@ -1,11 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback, Fragment } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { AlertCircle } from "lucide-react";
-import locale from "~/utils/locale.json";
 import type LocaleStrings from "~/utils/types";
 import clsx from "clsx";
-import Header from "./header";
 import { TextArea } from "./text-area";
 
 const debounce = (func: (arg: string) => void, delay: number) => {
@@ -16,12 +14,16 @@ const debounce = (func: (arg: string) => void, delay: number) => {
   };
 };
 
-export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
+export default function JSONFormatter({
+  localeStrings,
+  showColumns,
+}: {
+  localeStrings: LocaleStrings;
+  showColumns: boolean;
+}) {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
-  const [showColumns, setShowColumns] = useState(true);
-  const localeStrings = locale[lang] as LocaleStrings;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const formatJSON = useCallback(
@@ -59,12 +61,6 @@ export default function JSONFormatter({ lang = "en" }: { lang?: "en" | "es" }) {
 
   return (
     <div className="container mx-auto flex h-full max-h-full flex-col overflow-hidden bg-gray-900 text-white">
-      <Header
-        setShowColumns={setShowColumns}
-        lang={lang}
-        showColumns={showColumns}
-      />
-
       <div
         className={clsx([
           "flex flex-1 flex-col gap-1 overflow-hidden md:gap-2 lg:px-2",
