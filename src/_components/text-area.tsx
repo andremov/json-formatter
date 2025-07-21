@@ -45,16 +45,16 @@ export function TextArea({
         },
       ])}
     >
-      <div
-        className={clsx([
-          "flex h-10 items-center justify-between bg-gray-700 px-2 md:rounded-md",
-          {
-            "md:pointer-events-none": showColumns,
-          },
-        ])}
-        onClick={() => setIsMinimized(!isMinimized)}
-      >
-        <div className="flex items-center gap-2">
+      <div className="flex h-10 items-center justify-between bg-gray-700 px-2 md:rounded-md">
+        <div
+          className={clsx([
+            "flex items-center gap-2",
+            {
+              "md:pointer-events-none": showColumns,
+            },
+          ])}
+          onClick={() => setIsMinimized(!isMinimized)}
+        >
           <div
             className="flex items-center justify-center rounded-md border border-gray-500 bg-gray-600 p-1 outline-none transition hover:bg-gray-500"
             title={isMinimized ? expandLabel : minimizeLabel}
