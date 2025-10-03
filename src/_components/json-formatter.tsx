@@ -53,12 +53,6 @@ export default function JSONFormatter({
     formatJSON(input);
   }, [input, formatJSON]);
 
-  if (!localeStrings) {
-    console.log("Locale strings not found for language:", lang);
-
-    return <></>;
-  }
-
   return (
     <div className="container mx-auto flex h-full max-h-full flex-col overflow-hidden bg-gray-900 text-white">
       <div
