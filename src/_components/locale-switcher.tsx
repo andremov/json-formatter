@@ -1,18 +1,16 @@
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default function LocaleSwitcher({
-  lang = "en",
-}: {
-  lang?: "en" | "es";
-}) {
+export default function LocaleSwitcher() {
+  const { lang } = useParams<{ lang: "en" | "es" }>();
+
   return (
-    <div className="flex overflow-hidden rounded-md border border-gray-600 bg-gray-800">
+    <div className="flex rounded-md border border-gray-500 p-1 gap-1">
       <Link
         href={"/en"}
         className={
-          (lang === "en"
-            ? "bg-gray-600 font-semibold text-white"
-            : "text-gray-300 hover:text-white") + " px-3 py-1 transition-colors"
+          (lang === "en" ? "bg-gray-600 font-semibold" : "hover:bg-gray-700") +
+          " px-4 py-1 text-gray-100 transition-colors rounded-sm text-sm"
         }
       >
         EN
@@ -21,9 +19,8 @@ export default function LocaleSwitcher({
       <Link
         href={"/es"}
         className={
-          (lang === "es"
-            ? "bg-gray-600 font-semibold text-white"
-            : "text-gray-300 hover:text-white") + " px-3 py-1 transition-colors"
+          (lang === "es" ? "bg-gray-600 font-semibold" : "hover:bg-gray-700") +
+          " px-4 py-1 text-gray-100 transition-colors rounded-sm text-sm"
         }
       >
         ES

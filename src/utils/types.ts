@@ -1,6 +1,9 @@
 type LocaleStrings = {
   error: string;
   title: string;
+  owner: string;
+  author: string;
+  description: string;
   labels: {
     data: string;
     input: string;
@@ -11,6 +14,7 @@ type LocaleStrings = {
     copied: string;
     minimize: string;
     expand: string;
+    sample: string;
   };
 };
 

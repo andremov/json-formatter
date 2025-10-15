@@ -1,6 +1,5 @@
-import "~/styles/globals.css";
+import "./globals.css";
 
-import { GeistSans } from "geist/font/sans";
 import { type Metadata, type Viewport } from "next";
 import OfflineIndicator from "~/_components/offline-indicator";
 import ServiceWorkerRegistration from "~/_components/service-worker-registration";
@@ -44,7 +43,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#111827" />
@@ -59,7 +58,7 @@ export default function RootLayout({
       </head>
       <body className="bg-gray-900 text-gray-100">
         {/* <ServiceWorkerRegistration /> */}
-        <OfflineIndicator />
+        {/* <OfflineIndicator /> */}
         {children}
       </body>
     </html>

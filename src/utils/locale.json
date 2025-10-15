@@ -2,6 +2,9 @@
   "en": {
     "error": "Error",
     "title": "JSON Formatter",
+    "owner": "Built by",
+    "author": "Andrés Movilla",
+    "description": "Format and validate JSON data",
     "labels": {
       "data": "Paste or type your JSON here...",
       "input": "Input",
@@ -11,12 +14,16 @@
       "copy": "Copy",
       "copied": "Copied!",
       "minimize": "Minimize",
-      "expand": "Expand"
+      "expand": "Expand",
+      "sample": "Load Sample Data"
     }
   },
   "es": {
     "error": "Error",
     "title": "Formateador de JSON",
+    "owner": "Creado por",
+    "author": "Andrés Movilla",
+    "description": "Formatea y valida datos JSON",
     "labels": {
       "data": "Pega o escribe tu JSON aquí...",
       "input": "Entrada",
@@ -26,7 +33,8 @@
       "copy": "Copiar",
       "copied": "Copiado!",
       "minimize": "Minimizar",
-      "expand": "Expandir"
+      "expand": "Expandir",
+      "sample": "Cargar Datos de Ejemplo"
     }
   }
 }
