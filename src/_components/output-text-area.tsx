@@ -79,7 +79,7 @@ function JSONObjectRenderer({
   depth = 0,
 }: JSONRendererProps<Record<string, unknown>>) {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const keys = Object.keys(data);
+  const keys = Object.keys(data).sort((a, b) => a.localeCompare(b));
 
   if (keys.length === 0) {
     return (
