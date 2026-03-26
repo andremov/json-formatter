@@ -13,7 +13,7 @@ export default function HomePage() {
   const localeStrings = locale[lang] as LocaleStrings;
 
   return (
-    <div className="h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-slate-900 flex flex-col justify-between">
+    <div className="h-screen bg-cream flex flex-col justify-between">
       <Header title={localeStrings.title} />
 
       <JSONFormatter localeStrings={localeStrings} />

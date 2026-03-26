@@ -34,12 +34,12 @@ function JSONArrayRenderer({
       <div className={`${depth === 0 ? "" : "ml-5"} my-1`}>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="inline-flex items-center rounded px-1 hover:bg-gray-700"
+          className="inline-flex items-center rounded px-1 hover:bg-sand"
         >
           <ChevronRight className="mr-1 h-3 w-3" />
           <span>{`"${keyName || "root"}": `}</span>
           {"["}
-          <span className="text-gray-400">{data.length} items</span>
+          <span className="text-warm-gray">{data.length} items</span>
           {"]"}
         </button>
       </div>
@@ -50,11 +50,11 @@ function JSONArrayRenderer({
     <div
       className={`${
         depth === 0 ? "" : "ml-5"
-      } my-1 rounded-xl border-l border-dashed border-gray-600`}
+      } my-1 rounded-xl border-l border-dashed border-sand`}
     >
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="inline-flex items-center rounded px-1 hover:bg-gray-700"
+        className="inline-flex items-center rounded px-1 hover:bg-sand"
       >
         <ChevronDown className="mr-1 h-3 w-3" />
         {keyName && <span>{`"${keyName}": `}</span>}
@@ -95,12 +95,12 @@ function JSONObjectRenderer({
       <div className={`${depth === 0 ? "" : "ml-5"} my-1`}>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="inline-flex items-center rounded px-1 hover:bg-gray-700"
+          className="inline-flex items-center rounded px-1 hover:bg-sand"
         >
           <ChevronRight className="mr-1 h-3 w-3" />
           <span>{`"${keyName || "root"}": `}</span>
           {"{"}
-          <span className="text-gray-400">{keys.length} properties</span>
+          <span className="text-warm-gray">{keys.length} properties</span>
           {"}"}
         </button>
       </div>
@@ -111,11 +111,11 @@ function JSONObjectRenderer({
     <div
       className={`${
         depth === 0 ? "" : "ml-5"
-      } my-1 rounded-xl border-l border-dashed border-gray-600`}
+      } my-1 rounded-xl border-l border-dashed border-sand`}
     >
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="inline-flex items-center rounded px-1 hover:bg-gray-700"
+        className="inline-flex items-center rounded px-1 hover:bg-sand"
       >
         <ChevronDown className="mr-1 h-3 w-3" />
         {keyName && <span>{`"${keyName}": `}</span>}
@@ -223,15 +223,15 @@ export function OutputTextArea({
   };
 
   return (
-    <div className="flex min-h-12 flex-col gap-2 rounded-lg ease-in-out flex-1 p-6 bg-gray-800 border border-gray-700">
+    <div className="flex min-h-12 flex-col gap-2 rounded-lg ease-in-out flex-1 p-6 bg-cream-tinted border border-sand">
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-2xl font-semibold text-white">{title}</h2>
+        <h2 className="text-2xl font-semibold text-walnut">{title}</h2>
         <div className="flex items-center gap-2">
           <button
             disabled={!value}
             onClick={handleCopy}
-            className={`flex items-center gap-2 rounded-md bg-blue-600 px-2 py-1 text-white outline-none transition hover:bg-blue-500 ${
-              isCopied ? "bg-green-600 text-white hover:bg-green-500" : ""
+            className={`flex items-center gap-2 rounded-md bg-terracotta px-2 py-1 text-cream outline-none transition-colors duration-200 hover:bg-terracotta/85 ${
+              isCopied ? "bg-olive text-cream hover:bg-olive/85" : ""
             }`}
           >
             {isCopied ? (
@@ -251,8 +251,8 @@ export function OutputTextArea({
 
       <div className="flex md:max-h-full md:opacity-100 min-h-0 flex-1 overflow-hidden px-1 transition-all duration-300 ease-in-out opacity-100">
         <pre
-          className={`flex-1 overflow-x-hidden text-wrap break-words rounded-md bg-gray-900 px-6 py-4 font-mono text-gray-100 border-gray-600 border ${
-            error ? "whitespace-pre-wrap text-red-400" : "overflow-auto"
+          className={`flex-1 overflow-x-hidden text-wrap break-words rounded-md bg-cream px-6 py-4 font-mono text-walnut border-sand border ${
+            error ? "whitespace-pre-wrap text-terracotta" : "overflow-auto"
           }`}
         >
           {error ? (

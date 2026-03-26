@@ -32,14 +32,14 @@ export function InputTextArea({
   };
 
   return (
-    <div className="flex min-h-12 flex-col gap-2 rounded-lg ease-in-out flex-1 p-6 bg-gray-800 border border-gray-700">
+    <div className="flex min-h-12 flex-col gap-2 rounded-lg ease-in-out flex-1 p-6 bg-cream-tinted border border-sand">
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-2xl font-semibold text-white">{title}</h2>
+        <h2 className="text-2xl font-semibold text-walnut">{title}</h2>
         <div className="flex items-center gap-2">
           {onSetSampleData && (
             <button
               onClick={onSetSampleData}
-              className="flex items-center gap-2 rounded-md bg-green-600 px-2 py-1 text-white outline-none transition hover:bg-green-500"
+              className="flex items-center gap-2 rounded-md bg-olive px-2 py-1 text-cream outline-none transition-colors duration-200 hover:bg-olive/85"
             >
               <span>{buttonLabels.sample}</span>
             </button>
@@ -47,8 +47,8 @@ export function InputTextArea({
           <button
             disabled={!value}
             onClick={handleCopy}
-            className={`flex items-center gap-2 rounded-md bg-blue-600 px-2 py-1 text-white outline-none transition hover:bg-blue-500 ${
-              isCopied ? "bg-green-600 text-white hover:bg-green-500" : ""
+            className={`flex items-center gap-2 rounded-md bg-terracotta px-2 py-1 text-cream outline-none transition-colors duration-200 hover:bg-terracotta/85 ${
+              isCopied ? "bg-olive text-cream hover:bg-olive/85" : ""
             }`}
           >
             {isCopied ? (
@@ -72,7 +72,7 @@ export function InputTextArea({
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full flex-1 resize-none rounded-md border border-gray-600 bg-gray-700 p-4 font-mono text-white placeholder-gray-400 outline-none transition focus:ring-blue-500 focus:ring-2"
+          className="w-full flex-1 resize-none rounded-md border border-sand bg-cream p-4 font-mono text-walnut placeholder-warm-gray outline-none transition-colors duration-200 focus:ring-terracotta/50 focus:ring-2"
         />
       </div>
     </div>

@@ -2,12 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #3D2F2A;
+    background-color: #FAF6F1;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: #C07252;
+    color: #FAF6F1;
+  }
 }
 
-body {
-  @apply bg-gray-900 text-white;
+html {
+  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
@@ -17,13 +35,13 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-800;
+  @apply bg-cream-tinted;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-gray-600;
+  @apply rounded-full bg-sand;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  @apply bg-warm-gray;
 }

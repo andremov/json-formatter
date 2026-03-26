@@ -1,12 +1,23 @@
 import "./globals.css";
 
+import { Inter, Lora } from "next/font/google";
 import { type Metadata, type Viewport } from "next";
-import OfflineIndicator from "~/_components/offline-indicator";
-import ServiceWorkerRegistration from "~/_components/service-worker-registration";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   title: "JSON Formatter",
-  description: "👤✏️ Andrés Movilla",
+  description: "Format and validate JSON data offline",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
     { rel: "apple-touch-icon", url: "/favicon.svg" },
@@ -36,29 +47,27 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#111827",
+  themeColor: "#FAF6F1",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#111827" />
+        <meta name="theme-color" content="#FAF6F1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="JSON Formatter" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#111827" />
+        <meta name="msapplication-TileColor" content="#FAF6F1" />
         <meta name="msapplication-tap-highlight" content="no" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
-      <body className="bg-gray-900 text-gray-100">
-        {/* <ServiceWorkerRegistration /> */}
-        {/* <OfflineIndicator /> */}
+      <body className="bg-cream text-walnut font-sans">
         {children}
       </body>
     </html>
