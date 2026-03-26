@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   description: "Format and validate JSON data offline",
   icons: [
     { rel: "icon", url: "/favicon.ico" },
-    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
     { rel: "apple-touch-icon", url: "/favicon.svg" },
   ],
   manifest: "/manifest.json",
