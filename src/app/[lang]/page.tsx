@@ -18,11 +18,7 @@ export default function HomePage() {
 
       <JSONFormatter localeStrings={localeStrings} />
 
-      <Footer
-        author={localeStrings.author}
-        description={localeStrings.description}
-        owner={localeStrings.owner}
-      />
+      <Footer />
     </div>
   );
 }
